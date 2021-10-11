@@ -19,4 +19,5 @@ export interface axiosRequestConfig {
   method?: Method
   data?: any
   params?: any
+  headers?:any
 }
