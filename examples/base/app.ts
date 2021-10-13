@@ -95,6 +95,7 @@ axios({
 axios({
     method: 'post',
     url: '/base/post',
+    responseType: 'json',
     headers: {
         'content-type': 'application/json',
         'Accept': 'application/json, text/plain, */*'
@@ -107,16 +108,16 @@ axios({
     console.log(res)
 })
 
-const paramsString = 'q=URLUtils.searchParams&topic=api'
-const searchParams = new URLSearchParams(paramsString)
+// const paramsString = 'q=URLUtils.searchParams&topic=api'
+// const searchParams = new URLSearchParams(paramsString)
 
-axios({
-    method: 'post',
-    url: '/base/post',
-    data: searchParams
-}).then((res)=> {
-    console.log(res)
-})
+// axios({
+//     method: 'post',
+//     url: '/base/post',
+//     data: searchParams
+// }).then((res)=> {
+//     console.log(res)
+// })
 
 function printLabel(labelledObj: {label: string, size?: number}) {
     console.log(labelledObj.label)
