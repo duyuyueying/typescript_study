@@ -24,8 +24,8 @@ export interface axiosRequestConfig {
   timeout?: number
 }
 
-export interface AxiosResponse {
-  data: any
+export interface AxiosResponse<T=any> {
+  data: T
   status: number
   statusText: string
   headers: any
@@ -33,7 +33,7 @@ export interface AxiosResponse {
   request: any
 }
 
-export interface AxiosPromise extends Promise<AxiosResponse> {}
+export interface AxiosPromise<T=any> extends Promise<AxiosResponse<T>> {}
 
 export interface AxiosError extends Error {
   isAxiosError: boolean
@@ -44,16 +44,17 @@ export interface AxiosError extends Error {
 }
 
 export interface Axios{
-  request(config: axiosRequestConfig): AxiosPromise
-  get(url: string, config?: axiosRequestConfig): AxiosPromise
-  delete(url: string, config?: axiosRequestConfig): AxiosPromise
-  head(url: string, config?: axiosRequestConfig): AxiosPromise
-  options(url: string, config?: axiosRequestConfig): AxiosPromise
-  post(url: string, data?:any, config?:axiosRequestConfig) : AxiosPromise
-  put(url: string, data?:any, config?:axiosRequestConfig) : AxiosPromise
-  patch(url: string, data?:any, config?:axiosRequestConfig) : AxiosPromise
+  request<T=any>(config: axiosRequestConfig): AxiosPromise<T>
+  get<T=any>(url: string, config?: axiosRequestConfig): AxiosPromise<T>
+  delete<T=any>(url: string, config?: axiosRequestConfig): AxiosPromise<T>
+  head<T=any>(url: string, config?: axiosRequestConfig): AxiosPromise<T>
+  options<T=any>(url: string, config?: axiosRequestConfig): AxiosPromise<T>
+  post<T=any>(url: string, data?:any, config?:axiosRequestConfig) : AxiosPromise<T>
+  put<T=any>(url: string, data?:any, config?:axiosRequestConfig) : AxiosPromise<T>
+  patch<T=any>(url: string, data?:any, config?:axiosRequestConfig) : AxiosPromise<T>
 }
 
 export interface AxiosInstance extends Axios{
-  (config: axiosRequestConfig): AxiosPromise
+  <T=any>(config: axiosRequestConfig): AxiosPromise<T>
+  <T=any>(url: string, config?: axiosRequestConfig) : AxiosPromise<T>
 }
